@@ -1,0 +1,23 @@
+User@LAPTOPTHORIQ MINGW64 /d/KULYEAHHH/SEM4/UAS/devops/technova-devops/inventory-service (feature-devops)
+$ git add .
+(venv)
+User@LAPTOPTHORIQ MINGW64 /d/KULYEAHHH/SEM4/UAS/devops/technova-devops/inventory-service (feature-devops)
+$ git status
+On branch feature-devops
+Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+        new file:   __pycache__/app.cpython-314.pyc
+        new file:   pytest.ini
+        new file:   tests/__pycache__/test_inventory.cpython-314-pytest-9.1.1.pyc
+        modified:   tests/test_inventory.py
+
+Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+        modified:   ../.github/workflows/ci-cd.yml
+
+Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+        ../.github/workflows/.gitignore
+
+(venv)

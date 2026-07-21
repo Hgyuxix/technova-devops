@@ -35,9 +35,9 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Run Unit Test
+      - name: Run pytest
         run: |
-          pytest tests -v
+          python -m pytest tests -v
 
       - name: Build Docker Image
         run: |
