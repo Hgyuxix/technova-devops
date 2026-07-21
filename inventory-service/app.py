@@ -11,11 +11,11 @@ def home():
         "status": "running"
     }
 
-@app.route("/health")
+@app.route("/health", methods=["GET"])
 def health():
-    return {
+    return jsonify({
         "status": "ok"
-    }
+    }), 200
 
 @app.route("/items", methods=["GET"])
 def get_items():
