@@ -6,7 +6,6 @@ on:
       - main
       - feature-devops
       - feature-monitoring
-
   pull_request:
     branches:
       - main
@@ -35,7 +34,7 @@ jobs:
 
       - name: Run pytest
         run: |
-          python -m pytest tests -v
+          python -m pytest -v
         env:
           PYTHONPATH: .
 
