@@ -1,142 +1,42 @@
-name: CI/CD Pipeline
-
-
+name: TechNova CI/CD
 
 on:
-
   push:
-
     branches:
-
       - main
-      - feature-inventory
-      - feature-monitoring
-
-  pull_request:
-
-    branches:
-
-      - main
-
-
-
-jobs:
-
-  build:
-
-    runs-on: ubuntu-latest
-
-
-
-    steps:
-
-      - name: Checkout Repository
-
-        uses: actions/checkout@v4
-
-
-
-      - name: Verify Repository
-
-        run: |
-
-          echo "Repository berhasil di-checkout."
-
-          ls -la
-
-
-
-      - name: Pipeline Success
-
-        run: echo "CI/CD berhasil dijalankan."
-
-
-        name: TechNova CI/CD
-
-
-
-on:
-
-  push:
-
-    branches:
-
-      - main
-
       - feature-devops
-
       - feature-monitoring
 
-
-
   pull_request:
-
     branches:
-
       - main
 
-
-
 jobs:
-
-
-
   inventory-test:
-
-
-
     runs-on: ubuntu-latest
-
-
 
     defaults:
-
       run:
-
         working-directory: inventory-service
 
-
-
     steps:
-
-
-
       - name: Checkout Repository
-
         uses: actions/checkout@v4
 
-
-
       - name: Setup Python
-
         uses: actions/setup-python@v5
-
         with:
-
           python-version: "3.11"
 
-
-
       - name: Install Dependencies
-
         run: |
-
           pip install -r requirements.txt
-
           pip install pytest
 
-
-
       - name: Run pytest
-
         run: |
-
           python -m pytest tests -v
 
-
-
       - name: Build Docker Image
-
         run: |
-
           docker build -t inventory-service .
