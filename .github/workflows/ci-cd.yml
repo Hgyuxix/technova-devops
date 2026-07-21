@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - feature-devops
+      - feature-monitoring
 
   pull_request:
     branches:
