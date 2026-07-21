@@ -1,0 +1,43 @@
+name: TechNova CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - feature-devops
+      - feature-monitoring
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  inventory-test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: inventory-service
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run pytest
+        run: |
+          python -m pytest -v
+        env:
+          PYTHONPATH: .
+
+      - name: Build Docker Image
+        run: |
+          docker build -t inventory-service .
