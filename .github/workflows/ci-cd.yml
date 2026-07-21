@@ -40,4 +40,4 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t inventory-service .
+          docker build -t inventory-service -f inventory-service/Dockerfile inventory-service/
