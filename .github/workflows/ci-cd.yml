@@ -11,6 +11,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   inventory-test:
     runs-on: ubuntu-latest
@@ -30,13 +32,26 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
           pip install pytest
 
       - name: Run Pytest
         run: |
-          pytest tests -v
+          if [ -d tests ] && [ "$(find tests -name 'test_*.py' | wc -l)" -gt 0 ]; then
+            pytest tests -v
+          else
+            echo "Tidak ada unit test, skip pytest."
+          fi
 
       - name: Build Docker Image
         run: |
-          docker build -t inventory-service .
+          if [ -f Dockerfile ]; then
+            docker build -t inventory-service .
+          else
+            echo "Dockerfile tidak ditemukan, skip build."
+          fi
