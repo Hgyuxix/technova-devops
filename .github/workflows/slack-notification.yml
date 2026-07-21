@@ -4,14 +4,15 @@ on:
   push:
     branches:
       - main
+      - feature-monitoring
+  workflow_dispatch:
 
 jobs:
   notify:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Send Notification to Slack
         uses: rtCamp/action-slack-notify@v2
